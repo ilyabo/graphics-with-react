@@ -1,0 +1,13 @@
+
+ul > *+* {
+  margin-top: 1em;
+}
+
+li {
+  list-style-type: none;
+}
+
+.spectacle-content {
+  /*max-width: initial !important;*/
+  max-height: initial !important;
+}
