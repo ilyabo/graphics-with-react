@@ -1,29 +1,20 @@
 import React from 'react';
 import {
   Appear,
-  BlockQuote,
-  Cite,
-  Code,
   CodePane,
   Deck,
   Heading,
   ListItem,
   List,
-  Quote,
   Slide,
   Text,
   Image,
-  Table,
-  TableHeader,
-  TableBody,
-  TableHeaderItem,
-  TableRow,
-  TableItem,
 } from 'spectacle'
 import styled, { css } from 'react-emotion'
 import createTheme from 'spectacle/lib/themes/default'
 import { range } from 'lodash'
 import Bubbles, { code as BubblesCode } from './examples/Bubbles'
+import Lines, { code as LinesCode } from './examples/Lines'
 
 require('normalize.css');
 require('./main.css');
@@ -44,14 +35,16 @@ const theme = createTheme(
 )
 
 
-const CodeSnippet = ({ code }) =>
+const CodeSnippet = ({ code, fontSize = 1.5 }) =>
   <div
     className={css({
       display: 'flex',
-      flex: '0 0 1000px',
+      flex: '0 0 800px',
+      height: '800px',
+      overflow: 'auto',
       justifyContent: 'center',
       '& > div': {
-        fontSize: '1.5rem',
+        fontSize: `${fontSize}rem`,
       },
       '& pre': {
         backgroundColor: '#fff',
@@ -83,6 +76,7 @@ const Row = styled('div')(props => ({
   alignItems: 'center',
   justifyItems: 'center',
   justifyContent: 'center',
+  minHeight: 500,
   // '&>*': {
   //   // display: 'flex',
   //   // flexGrow: 1,
@@ -93,9 +87,12 @@ const Row = styled('div')(props => ({
   },
 }))
 
+const smallerFont = css({ fontSize: '1em' })
+
 
 export default class Presentation extends React.Component {
   render() {
+
     return (
       <Deck
         transition={['fade']}
@@ -141,6 +138,7 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
+
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
             SVG
@@ -150,8 +148,9 @@ export default class Presentation extends React.Component {
             <List>
               <Appear><ListItem>Vector graphics</ListItem></Appear>
               <Appear><ListItem>Scene graph</ListItem></Appear>
-              <Appear><ListItem>XML ⇒ lives in the DOM</ListItem></Appear>
               <Appear><ListItem>Objects support events</ListItem></Appear>
+              <Appear><ListItem>XML, lives in the DOM</ListItem></Appear>
+              <Appear><ListItem>CSS for styling</ListItem></Appear>
               <Appear><ListItem>React supports SVG</ListItem></Appear>
             </List>
 
@@ -160,7 +159,7 @@ export default class Presentation extends React.Component {
                 width={400}
                 height={400}
                 color={colors.secondary}
-                numPoints={1000}
+                numPoints={200}
               />
             </Figure>
           </Row>
@@ -171,7 +170,7 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
-            SVG Example
+            REACT + SVG
           </Heading>
 
           <Row>
@@ -180,8 +179,7 @@ export default class Presentation extends React.Component {
               <Bubbles
                 width={400}
                 height={400}
-                numPoints={1000}
-                color={colors.secondary}
+                numPoints={200}
               />
             </Figure>
           </Row>
@@ -190,24 +188,75 @@ export default class Presentation extends React.Component {
         </Slide>
 
 
-        {/*<Table>*/}
-          {/*<TableHeader>*/}
-            {/*<TableRow>*/}
-              {/*<TableHeaderItem>Good for</TableHeaderItem>*/}
-              {/*<TableHeaderItem>Not so good for</TableHeaderItem>*/}
-            {/*</TableRow>*/}
-          {/*</TableHeader>*/}
-          {/*<TableBody>*/}
-            {/*<TableRow>*/}
-              {/*<TableItem>None</TableItem>*/}
-              {/*<TableItem>61.8%</TableItem>*/}
-            {/*</TableRow>*/}
-            {/*<TableRow>*/}
-              {/*<TableItem>jQuery</TableItem>*/}
-              {/*<TableItem>28.3%</TableItem>*/}
-            {/*</TableRow>*/}
-          {/*</TableBody>*/}
-        {/*</Table>*/}
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+           <Heading size={6} textColor="secondary" caps>
+             SVG summary
+           </Heading>
+
+           <Row>
+
+             <List>
+               <Appear><ListItem className={smallerFont}>😀 <br/>Very convenient to use</ListItem></Appear>
+               <Appear><ListItem className={smallerFont}>😀 <br/>Good for geom objects</ListItem></Appear>
+               <Appear><ListItem className={smallerFont}>😀 <br/>Seamless with React</ListItem></Appear>
+             </List>
+             <List>
+               <Appear><ListItem className={smallerFont}>😢 <br/>Slow for >5K objects</ListItem></Appear>
+               <Appear><ListItem className={smallerFont}>😢 <br/>Bad for work with pixels</ListItem></Appear>
+             </List>
+
+           </Row>
+
+         </Slide>
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            Canvas (2D)
+          </Heading>
+
+          <Row>
+            <List>
+              <Appear><ListItem>Raster bitmap</ListItem></Appear>
+              <Appear><ListItem>Drawing primitives</ListItem></Appear>
+              <Appear><ListItem>Access to pixels</ListItem></Appear>
+            </List>
+
+            <Figure>
+              <Lines
+                width={400}
+                height={400}
+                numLines={10000}
+              />
+            </Figure>
+          </Row>
+
+        </Slide>
+
+
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            REACT + 2D Canvas
+          </Heading>
+
+          <Row>
+            <CodeSnippet
+              code={LinesCode}
+              fontSize={1.4}
+            />
+            <Figure>
+              <Lines
+                width={400}
+                height={400}
+                numLines={10000}
+              />
+            </Figure>
+          </Row>
+
+
+        </Slide>
 
 
       </Deck>
