@@ -14,9 +14,12 @@ import styled, { css } from 'react-emotion'
 import createTheme from 'spectacle/lib/themes/default'
 import { range } from 'lodash'
 import SvgBubbles, { code as SvgBubblesCode } from './examples/SvgBubbles'
+import SvgAnim, { code as SvgAnimCode } from './examples/SvgAnim'
+import SvgSpringAnim, { code as SvgSpringAnimCode } from './examples/SvgSpringAnim'
 import CanvasLines, { code as CanvasLinesCode } from './examples/CanvasLines'
 import CanvasAnim, { code as CanvasAnimCode } from './examples/CanvasAnim'
 import CanvasInteractive, { code as CanvasInteractiveCode } from './examples/CanvasInteractive'
+import CanvasInteractive2, { code as CanvasInteractive2Code } from './examples/CanvasInteractive2'
 
 require('normalize.css');
 require('./main.css');
@@ -113,13 +116,16 @@ export default class Presentation extends React.Component {
             src="images/tl-illustraion-1.svg"
             height={300}
           />
-          <Text caps margin="40px 0 10px 0" textColor="tertiary" >
-            Ilya Boyandin
-          </Text>
           <Image
             src="images/TL-logo-Horizontal-White.svg"
             height={30}
           />
+          <Text caps margin="60px 0 10px 0" textColor="tertiary" >
+            Ilya Boyandin
+          </Text>
+          <Text textColor="tertiary">
+            @ilyabo
+          </Text>
         </Slide>
 
 
@@ -150,8 +156,8 @@ export default class Presentation extends React.Component {
             <List>
               <Appear><ListItem>Vector graphics</ListItem></Appear>
               <Appear><ListItem>Scene graph</ListItem></Appear>
-              <Appear><ListItem>Objects support events</ListItem></Appear>
               <Appear><ListItem>XML, lives in the DOM</ListItem></Appear>
+              <Appear><ListItem>Objects support events</ListItem></Appear>
               <Appear><ListItem>CSS for styling</ListItem></Appear>
               <Appear><ListItem>React supports SVG</ListItem></Appear>
             </List>
@@ -174,7 +180,6 @@ export default class Presentation extends React.Component {
           <Heading size={6} textColor="secondary" caps>
             REACT + SVG
           </Heading>
-
           <Row>
             <CodeSnippet code={SvgBubblesCode} />
             <Figure>
@@ -185,8 +190,44 @@ export default class Presentation extends React.Component {
               />
             </Figure>
           </Row>
+        </Slide>
 
 
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            REACT + SVG + Animation
+          </Heading>
+          <Row>
+            <CodeSnippet
+              code={SvgAnimCode}
+              fontSize={1.3}
+            />
+            <Figure>
+              <SvgAnim
+                width={400}
+                height={400}
+              />
+            </Figure>
+          </Row>
+        </Slide>
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            REACT + SVG + React-Spring
+          </Heading>
+          <Row>
+            <CodeSnippet
+              code={SvgSpringAnimCode}
+              fontSize={1.1}
+            />
+            <Figure>
+              <SvgSpringAnim
+                width={400}
+                height={400}
+              />
+            </Figure>
+          </Row>
         </Slide>
 
 
@@ -279,22 +320,58 @@ export default class Presentation extends React.Component {
 
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps margin="0 0 50px 0">
+            REACT + 2D Canvas + Interactivity
+          </Heading>
+
+          <Image
+            src="images/add-hit-region.png"
+            width="100%"
+          />
+
+        </Slide>
+
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
             REACT + 2D Canvas + Interactivity
           </Heading>
           <Row>
             <CodeSnippet
               code={CanvasInteractiveCode}
-              fontSize={1.4}
+              fontSize={1.2}
             />
             <Figure>
               <CanvasInteractive
                 width={400}
                 height={400}
+                numObjects={20000}
               />
             </Figure>
           </Row>
         </Slide>
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            REACT + 2D Canvas + Fast Interactivity
+          </Heading>
+          <Row>
+            <CodeSnippet
+              code={CanvasInteractive2Code}
+              fontSize={1.2}
+            />
+            <Figure>
+              <CanvasInteractive2
+                width={400}
+                height={400}
+                numObjects={20000}
+              />
+            </Figure>
+          </Row>
+        </Slide>
+
       </Deck>
     );
   }

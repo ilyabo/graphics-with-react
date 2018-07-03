@@ -55,7 +55,7 @@ export default class CanvasAnim extends React.Component {
 
 
 export const code = `
-export default class CanvasAnim extends React.Component {
+class CanvasAnim extends React.Component {
 
   constructor(props) {
     super(props)

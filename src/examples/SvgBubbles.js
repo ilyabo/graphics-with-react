@@ -27,7 +27,7 @@ const SvgBubbles = ({ width, height, numPoints }) =>
     )}
   </svg>
 
-export default (SvgBubbles)
+export default pure(SvgBubbles)
 
 export const code = `
 const SvgBubbles = ({ width, height, numPoints }) =>

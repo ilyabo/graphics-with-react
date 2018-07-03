@@ -1,10 +1,11 @@
 import * as React from 'react'
 
 
-export default class CanvasLines extends React.Component {
+export default class CanvasLines extends React.PureComponent {
   constructor(props) {
     super(props)
     this.canvasRef = React.createRef()
+    this.state = { time: 0 }
   }
   componentDidMount() {
     this.redraw()
@@ -27,10 +28,15 @@ export default class CanvasLines extends React.Component {
     }
   }
 
+  handleClick = () => {
+    this.setState(({ time }) => ({ time: time + 1 }))
+  }
+
   render() {
     const { width, height } = this.props
     return (
       <canvas
+        onClick={this.handleClick}
         width={width} height={height}
         ref={this.canvasRef}
       />
