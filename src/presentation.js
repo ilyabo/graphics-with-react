@@ -13,8 +13,10 @@ import {
 import styled, { css } from 'react-emotion'
 import createTheme from 'spectacle/lib/themes/default'
 import { range } from 'lodash'
-import Bubbles, { code as BubblesCode } from './examples/Bubbles'
-import Lines, { code as LinesCode } from './examples/Lines'
+import SvgBubbles, { code as SvgBubblesCode } from './examples/SvgBubbles'
+import CanvasLines, { code as CanvasLinesCode } from './examples/CanvasLines'
+import CanvasAnim, { code as CanvasAnimCode } from './examples/CanvasAnim'
+import CanvasInteractive, { code as CanvasInteractiveCode } from './examples/CanvasInteractive'
 
 require('normalize.css');
 require('./main.css');
@@ -155,7 +157,7 @@ export default class Presentation extends React.Component {
             </List>
 
             <Figure>
-              <Bubbles
+              <SvgBubbles
                 width={400}
                 height={400}
                 color={colors.secondary}
@@ -174,9 +176,9 @@ export default class Presentation extends React.Component {
           </Heading>
 
           <Row>
-            <CodeSnippet code={BubblesCode} />
+            <CodeSnippet code={SvgBubblesCode} />
             <Figure>
-              <Bubbles
+              <SvgBubbles
                 width={400}
                 height={400}
                 numPoints={200}
@@ -223,7 +225,7 @@ export default class Presentation extends React.Component {
             </List>
 
             <Figure>
-              <Lines
+              <CanvasLines
                 width={400}
                 height={400}
                 numLines={10000}
@@ -243,22 +245,56 @@ export default class Presentation extends React.Component {
 
           <Row>
             <CodeSnippet
-              code={LinesCode}
+              code={CanvasLinesCode}
               fontSize={1.4}
             />
             <Figure>
-              <Lines
+              <CanvasLines
                 width={400}
                 height={400}
                 numLines={10000}
               />
             </Figure>
           </Row>
-
-
         </Slide>
 
 
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            REACT + 2D Canvas + Animation
+          </Heading>
+          <Row>
+            <CodeSnippet
+              code={CanvasAnimCode}
+              fontSize={1.4}
+            />
+            <Figure>
+              <CanvasAnim
+                width={400}
+                height={400}
+              />
+            </Figure>
+          </Row>
+        </Slide>
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            REACT + 2D Canvas + Interactivity
+          </Heading>
+          <Row>
+            <CodeSnippet
+              code={CanvasInteractiveCode}
+              fontSize={1.4}
+            />
+            <Figure>
+              <CanvasInteractive
+                width={400}
+                height={400}
+              />
+            </Figure>
+          </Row>
+        </Slide>
       </Deck>
     );
   }

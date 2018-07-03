@@ -1,13 +1,17 @@
 import * as React from 'react'
 
 
-export default class Lines extends React.Component {
+export default class CanvasLines extends React.Component {
   constructor(props) {
     super(props)
     this.canvasRef = React.createRef()
   }
-  componentDidMount() { this.redraw() }
-  componentDidUpdate() { this.redraw() }
+  componentDidMount() {
+    this.redraw()
+  }
+  componentDidUpdate() {
+    this.redraw()
+  }
 
   redraw() {
     const { width, height, numLines } = this.props
@@ -18,7 +22,7 @@ export default class Lines extends React.Component {
       ctx.beginPath()
       ctx.moveTo(Math.random() * width, Math.random() * height)
       ctx.lineTo(Math.random() * width, Math.random() * height)
-      ctx.strokeStyle = `hsl(${0.5+Math.random()*0.5}turn 40% ${100*(i/numLines)}%)`
+      ctx.strokeStyle = `hsl(${0.5+Math.random()*0.5}turn 40% ${90*(i/numLines)}%)`
       ctx.stroke()
     }
   }
@@ -36,7 +40,7 @@ export default class Lines extends React.Component {
 }
 
 export const code = `
-class Lines extends React.Component {
+class CanvasLines extends React.Component {
 
   constructor(props) {
     super(props)
@@ -53,9 +57,13 @@ class Lines extends React.Component {
     )
   }
   
-  componentDidMount() { this.redraw() }
+  componentDidMount() { 
+    this.redraw() 
+  }
   
-  componentDidUpdate() { this.redraw() }
+  componentDidUpdate() { 
+    this.redraw() 
+  }
 
   redraw() {
     const { width, height, numLines } = this.props

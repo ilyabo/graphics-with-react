@@ -3,7 +3,7 @@ import { range } from 'lodash'
 import { css } from 'react-emotion'
 import { pure } from 'recompose'
 
-const Bubbles = ({ width, height, numPoints }) =>
+const SvgBubbles = ({ width, height, numPoints }) =>
   <svg
     width={width}
     height={height}
@@ -27,10 +27,10 @@ const Bubbles = ({ width, height, numPoints }) =>
     )}
   </svg>
 
-export default (Bubbles)
+export default (SvgBubbles)
 
 export const code = `
-const Bubbles = ({ width, height, numPoints }) =>
+const SvgBubbles = ({ width, height, numPoints }) =>
   <svg width={width} height={height}>
     { range(numPoints).map((point, i) =>
       <circle key={i}
