@@ -116,7 +116,7 @@ class CanvasInteractive extends PureComponent {
       const minY = Math.random() * height
       const maxX = minX + Math.random() * width / 10
       const maxY = minY + Math.random() * height / 10
-      const color = \`hsl(${0.2 + Math.random() * 0.5}turn 70% 40%)\`
+      const color = \`hsl(\${0.2 + Math.random() * 0.5}turn 70% 40%)\`
       objects.push({ minX, minY, maxX, maxY, color })
     }
     return objects

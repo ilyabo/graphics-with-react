@@ -6,17 +6,28 @@ export default class SvgAnim extends React.Component {
     super(props)
     this.canvasRef = React.createRef()
     this.state = {
-      time: 0
+      time: 0,
+      animation: null,
     }
   }
 
   componentDidMount() {
-    requestAnimationFrame(this.tick)
+    this.setState({
+      animation: requestAnimationFrame(this.tick)
+    })
   }
 
+  componentWillUnmount() {
+    const { animation } = this.state
+    cancelAnimationFrame(animation)
+  }
+
+
   tick = () => {
-    this.setState(({ time }) => ({ time: time + 1 }))
-    requestAnimationFrame(this.tick)
+    this.setState(({ time }) => ({
+      time: time + 1,
+      animation: requestAnimationFrame(this.tick)
+    }))
   }
 
   render() {
@@ -47,17 +58,27 @@ class SvgAnim extends React.Component {
     super(props)
     this.canvasRef = React.createRef()
     this.state = {
-      time: 0
+      time: 0,
+      animation: null,
     }
   }
 
   componentDidMount() {
-    requestAnimationFrame(this.tick)
+    this.setState({
+      animation: requestAnimationFrame(this.tick)
+    })
+  }
+
+  componentWillUnmount() {
+    const { animation } = this.state
+    cancelAnimationFrame(animation)
   }
 
   tick = () => {
-    this.setState(({ time }) => ({ time: time + 1 }))
-    requestAnimationFrame(this.tick)
+    this.setState(({ time }) => ({
+      time: time + 1,
+      animation: requestAnimationFrame(this.tick)
+    }))
   }
 
   render() {
