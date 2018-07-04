@@ -20,6 +20,8 @@ import CanvasLines, { code as CanvasLinesCode } from './examples/CanvasLines'
 import CanvasAnim, { code as CanvasAnimCode } from './examples/CanvasAnim'
 import CanvasInteractive, { code as CanvasInteractiveCode } from './examples/CanvasInteractive'
 import CanvasInteractive2, { code as CanvasInteractive2Code } from './examples/CanvasInteractive2'
+import HelloGL, { code as HelloGLCode } from './examples/HelloGL'
+import HelloGLAnim from './examples/HelloGLAnim'
 
 require('normalize.css');
 require('./main.css');
@@ -451,19 +453,16 @@ export default class Presentation extends React.Component {
                 <Appear><ListItem>Runs on the GPU</ListItem></Appear>
                 <Appear><ListItem>The fastest performance</ListItem></Appear>
                 <Appear><ListItem>Most difficult to use</ListItem></Appear>
+                <Appear><ListItem>Shader magic</ListItem></Appear>
               </List>
 
               <Figure>
-                <SvgBubbles
-                  width={400}
-                  height={400}
-                  color={colors.secondary}
-                  numPoints={200}
-                />
+                <HelloGLAnim />
               </Figure>
             </Row>
-
           </Slide>
+
+
 
 
       </Deck>
