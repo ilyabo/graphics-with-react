@@ -498,6 +498,27 @@ export default class Presentation extends React.Component {
         </Slide>
 
 
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            WebGL libraries for React
+          </Heading>
+
+          <Row>
+            <List>
+              <Appear><ListItem>react-three(-renderer)</ListItem></Appear>
+              <Appear><ListItem>aframe-react</ListItem></Appear>
+              <Appear><ListItem>react-pixie</ListItem></Appear>
+              <Appear><ListItem>gl-react</ListItem></Appear>
+              <Appear><ListItem>deck.gl</ListItem></Appear>
+              <Appear><ListItem>...</ListItem></Appear>
+            </List>
+
+            {/*<Figure>*/}
+              {/*<HelloGLAnim />*/}
+            {/*</Figure>*/}
+          </Row>
+        </Slide>
+
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
@@ -539,7 +560,6 @@ export default class Presentation extends React.Component {
         </Slide>
 
 
-
         <Slide bgColor="secondary" align="flex-end center">
           <Heading size={6} caps  textColor="primary">
             deck.gl map example
@@ -561,27 +581,71 @@ export default class Presentation extends React.Component {
           </Heading>
 
           <Row>
-            <Image
-              src="images/flowmap.gl-swiss-migration.png"
-              width={800}
+            <CodeSnippet
+              fontSize={1.3}
+              code={`
+  import DeckGL from 'deck.gl'
+  import MapGL from 'react-map-gl'
+  import FlowMapLayer from 'flowmap.gl'
+
+  class MyFlowMap extends Component {
+    render() {
+      const flowMapLayer = new FlowMapLayer({
+        id: 'flow-map-layer',
+        colors,
+        locations,
+        flows,
+        getLocationId: l => l.id,
+        getLocationCentroid: l => l.properties.centroid,
+        getFlowOriginId: f => f.origin,
+        getFlowDestId: f => f.dest,
+        getFlowMagnitude: f => f.magnitude,
+        showTotals: true,
+        showLocationAreas: true,
+        locationCircleSize: 3,
+        showLocationAreas: true,
+        getFlowMagnitude: f => f.count,
+        varyFlowColorByMagnitude: true,
+        showTotals: true,
+      })
+
+      return (
+        <MapGL
+          width={width} height={height}
+          {...viewport}
+          mapboxApiAccessToken={mapboxAccessToken}
+        >
+          <DeckGL
+            {...viewport}
+            width={width} height={height}
+            layers={[flowMapLayer]}
             />
-            {/*<Image*/}
-              {/*width={800}*/}
-              {/*src="images/flowmap.gl-morning-evening-peaks.gif"*/}
-            {/*/>*/}
+        </MapGL>
+      )
+    }
+  }`}
+            />
+            <Figure>
+              <Image
+                src="images/flowmap.gl-swiss-migration.png"
+                width={400} height={400}
+              />
+            </Figure>
           </Row>
         </Slide>
 
 
 
-        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
-          <Heading size={6} textColor="secondary" caps>
-            Space-Time Cube
-          </Heading>
-          <Image
-            src="images/traceviz-space-time-cube.png"
-          />
-        </Slide>
+
+
+        {/*<Slide bgColor="primary" textColor="tertiary" align="flex-end center">*/}
+          {/*<Heading size={6} textColor="secondary" caps>*/}
+            {/*Space-Time Cube*/}
+          {/*</Heading>*/}
+          {/*<Image*/}
+            {/*src="images/traceviz-space-time-cube.png"*/}
+          {/*/>*/}
+        {/*</Slide>*/}
 
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
