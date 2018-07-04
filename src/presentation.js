@@ -109,6 +109,23 @@ const Row = styled('div')(props => ({
 
 const smallerFont = css({ fontSize: '1em' })
 
+const Credits = () =>
+  <React.Fragment>
+    <Image
+      src="images/tl-illustraion-1.svg"
+      height={300}
+    />
+    <Image
+      src="images/TL-logo-Horizontal-White.svg"
+      height={30}
+    />
+    <Text caps margin="60px 0 10px 0" textColor="tertiary" >
+      Ilya Boyandin
+    </Text>
+    <Text textColor="tertiary">
+      @ilyabo
+    </Text>
+  </React.Fragment>
 
 export default class Presentation extends React.Component {
   render() {
@@ -127,20 +144,7 @@ export default class Presentation extends React.Component {
           <Heading margin="0 0 50px 0" size={2} fit  caps textColor="secondary" bold>
             Graphics with React
           </Heading>
-          <Image
-            src="images/tl-illustraion-1.svg"
-            height={300}
-          />
-          <Image
-            src="images/TL-logo-Horizontal-White.svg"
-            height={30}
-          />
-          <Text caps margin="60px 0 10px 0" textColor="tertiary" >
-            Ilya Boyandin
-          </Text>
-          <Text textColor="tertiary">
-            @ilyabo
-          </Text>
+          <Credits/>
         </Slide>
 
 
@@ -479,6 +483,29 @@ export default class Presentation extends React.Component {
         </Slide>
 
 
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            Flowmap.gl
+          </Heading>
+          <Text  margin="60px 0 10px 0" textColor="tertiary">
+            WebGL overlay for mapbox
+          </Text>
+
+          <Row>
+            <Image
+              src="images/flowmap.gl-swiss-migration.png"
+              width={800}
+            />
+            {/*<Image*/}
+              {/*width={800}*/}
+              {/*src="images/flowmap.gl-morning-evening-peaks.gif"*/}
+            {/*/>*/}
+          </Row>
+        </Slide>
+
+
+
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
             WebGL summary
@@ -513,9 +540,10 @@ export default class Presentation extends React.Component {
           <Heading margin="0 0 50px 0"  caps textColor="secondary" bold>
             Thanks!
           </Heading>
-          <Image
-            src="images/swiss-migration.png"
-          />
+          <Credits/>
+          {/*<Image*/}
+            {/*src="images/flowmap.gl-swiss-migration.png"*/}
+          {/*/>*/}
         </Slide>
       </Deck>
     );
