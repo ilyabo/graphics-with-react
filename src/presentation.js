@@ -287,6 +287,17 @@ export default class Presentation extends React.Component {
         </Slide>
 
 
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Image
+            src="images/ny-hexagons.png"
+          />
+        </Slide>
+
+
+
+
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
             Canvas (2D)
@@ -504,6 +515,16 @@ export default class Presentation extends React.Component {
           </Row>
         </Slide>
 
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            Space-Time Cube
+          </Heading>
+          <Image
+            src="images/traceviz-space-time-cube.png"
+          />
+        </Slide>
 
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
