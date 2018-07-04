@@ -48,7 +48,12 @@ const SummaryItem = ({ children, kind }) =>
       <div style={{
         display: 'flex',
       }}>
-      <span role="img" style={{ marginRight: '.5em' }}>{kind === 'yes' ? '😀' : '😢'}</span>
+      <span role="img" style={{ marginRight: '.5em' }}>
+        {
+          kind === 'yes' ? '😀' :
+            kind === 'no' ? '😢' :
+            kind === 'cool' ? '😎' : ''
+        }</span>
       {children}
       </div>
     </ListItem>
@@ -450,9 +455,27 @@ export default class Presentation extends React.Component {
               <SummaryItem kind="no">Less convenient</SummaryItem>
               <SummaryItem kind="no">No support for interactivity</SummaryItem>
             </List>
+            <List>
+              <SummaryItem kind="cool">Avoid unnecessary rendering</SummaryItem>
+            </List>
           </Row>
         </Slide>
 
+
+
+        <Slide bgColor="secondary" align="flex-end center">
+          <Heading size={6} caps  textColor="primary">
+            Canvas map tiles
+          </Heading>
+
+          <iframe
+            width={560 * 1.75}
+            height={315 * 1.75}
+            style={{ marginTop: 50 }}
+            src="https://www.youtube.com/embed/pIZSfswEUaU?rel=0&amp;controls=0&amp;showinfo=0"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+          />
+        </Slide>
 
 
 
@@ -497,11 +520,45 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
-            Flowmap.gl
+            deck.gl
           </Heading>
           <Text  margin="60px 0 10px 0" textColor="tertiary">
-            WebGL overlay for mapbox
+            WebGL overlays for mapbox-gl
           </Text>
+
+          <Row>
+            <Image
+              src="images/deck.gl-grid.png"
+              height={400}
+            />
+            <Image
+              src="images/deck.gl-taxis.png"
+              height={400}
+            />
+          </Row>
+        </Slide>
+
+
+
+        <Slide bgColor="secondary" align="flex-end center">
+          <Heading size={6} caps  textColor="primary">
+            deck.gl map example
+          </Heading>
+
+          <iframe
+            width={560 * 1.75}
+            height={315 * 1.75}
+            style={{ marginTop: 50 }}
+            src="https://www.youtube.com/embed/VCi76CHYrfM?rel=0&amp;controls=0&amp;showinfo=0&amp;start=3"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+          />
+        </Slide>
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            Flowmap.gl
+          </Heading>
 
           <Row>
             <Image
@@ -534,7 +591,9 @@ export default class Presentation extends React.Component {
           <Row>
             <List>
               <SummaryItem kind="yes">The fastest performance</SummaryItem>
+              <SummaryItem kind="yes">Parallel computation</SummaryItem>
               <SummaryItem kind="yes">Best for many objects (~1M)</SummaryItem>
+              <SummaryItem kind="yes">Natural choice for 3D</SummaryItem>
               <SummaryItem kind="yes">Can be used for fast 2D</SummaryItem>
             </List>
             <List>
