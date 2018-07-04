@@ -40,6 +40,19 @@ const theme = createTheme(
 )
 
 
+const SummaryItem = ({ children, kind }) =>
+  <Appear>
+    <ListItem className={smallerFont}>
+      <div style={{
+        display: 'flex',
+      }}>
+      <span role="img" style={{ marginRight: '.5em' }}>{kind === 'yes' ? '😀' : '😢'}</span>
+      {children}
+      </div>
+    </ListItem>
+  </Appear>
+
+
 const CodeSnippet = ({ code, fontSize = 1.5 }) =>
   <div
     className={css({
@@ -254,21 +267,17 @@ export default class Presentation extends React.Component {
            <Heading size={6} textColor="secondary" caps>
              SVG summary
            </Heading>
-
            <Row>
-
              <List>
-               <Appear><ListItem className={smallerFont}>😀 <br/>Very convenient to use</ListItem></Appear>
-               <Appear><ListItem className={smallerFont}>😀 <br/>Good for geom objects</ListItem></Appear>
-               <Appear><ListItem className={smallerFont}>😀 <br/>Seamless with React</ListItem></Appear>
+               <SummaryItem kind="yes">Very convenient to use</SummaryItem>
+               <SummaryItem kind="yes">Good for geom objects</SummaryItem>
+               <SummaryItem kind="yes">Seamless with React</SummaryItem>
              </List>
              <List>
-               <Appear><ListItem className={smallerFont}>😢 <br/>Slow for >5K objects</ListItem></Appear>
-               <Appear><ListItem className={smallerFont}>😢 <br/>Bad for work with pixels</ListItem></Appear>
+               <SummaryItem kind="no">Slow for >5K objects</SummaryItem>
+               <SummaryItem kind="no">Bad for work with pixels</SummaryItem>
              </List>
-
            </Row>
-
          </Slide>
 
 
@@ -384,6 +393,78 @@ export default class Presentation extends React.Component {
             </Figure>
           </Row>
         </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" >
+            REACT + 2D CANVAS + devicePixelRatio
+          </Heading>
+          <Row>
+            <CodeSnippet
+              code={`
+  render() {
+    const { width, height } = this.props
+    const { devicePixelRatio } = window
+    return (
+      <canvas
+        style={{ width, height }}
+        width={width * devicePixelRatio}
+        height={height * devicePixelRatio}
+        ref={this.canvasRef}
+      />
+    )
+              `}
+            />
+          </Row>
+        </Slide>
+
+
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+           <Heading size={6} textColor="secondary" caps>
+             2D Canvas summary
+           </Heading>
+           <Row>
+             <List>
+               <SummaryItem kind="yes">Faster than SVG</SummaryItem>
+               <SummaryItem kind="yes">Better for many objects (~10K)</SummaryItem>
+               <SummaryItem kind="yes">Better for working with pixels</SummaryItem>
+             </List>
+             <List>
+               <SummaryItem kind="no">Less convenient</SummaryItem>
+               <SummaryItem kind="no">No support for interactivity</SummaryItem>
+             </List>
+           </Row>
+         </Slide>
+
+
+
+
+          <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+            <Heading size={6} textColor="secondary" caps>
+              WebGL (3D Canvas)
+            </Heading>
+
+            <Row>
+              <List>
+                <Appear><ListItem>3D graphics</ListItem></Appear>
+                <Appear><ListItem>Runs on the GPU</ListItem></Appear>
+                <Appear><ListItem>The fastest performance</ListItem></Appear>
+                <Appear><ListItem>Most difficult to use</ListItem></Appear>
+              </List>
+
+              <Figure>
+                <SvgBubbles
+                  width={400}
+                  height={400}
+                  color={colors.secondary}
+                  numPoints={200}
+                />
+              </Figure>
+            </Row>
+
+          </Slide>
+
 
       </Deck>
     );
