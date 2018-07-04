@@ -103,7 +103,7 @@ export default class HelloGLAnim extends Component {
     const scale = 0.7 + 0.4 * Math.cos(0.001 * time);
     const angle = 2 * Math.PI * (0.5 + 0.5 * Math.cos(0.001 * time));
     return (
-      <Surface width={200} height={200}>
+      <Surface width={400} height={400}>
         <LinearCopy>
           <MotionBlur persistence={persistence}>
             <Rotate scale={scale} angle={angle}>

@@ -266,21 +266,21 @@ export default class Presentation extends React.Component {
 
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
-           <Heading size={6} textColor="secondary" caps>
-             SVG summary
-           </Heading>
-           <Row>
-             <List>
-               <SummaryItem kind="yes">Very convenient to use</SummaryItem>
-               <SummaryItem kind="yes">Good for geom objects</SummaryItem>
-               <SummaryItem kind="yes">Seamless with React</SummaryItem>
-             </List>
-             <List>
-               <SummaryItem kind="no">Slow for >5K objects</SummaryItem>
-               <SummaryItem kind="no">Bad for work with pixels</SummaryItem>
-             </List>
-           </Row>
-         </Slide>
+          <Heading size={6} textColor="secondary" caps>
+            SVG summary
+          </Heading>
+          <Row>
+            <List>
+              <SummaryItem kind="yes">Very convenient to use</SummaryItem>
+              <SummaryItem kind="yes">Good for geom objects</SummaryItem>
+              <SummaryItem kind="yes">Seamless with React</SummaryItem>
+            </List>
+            <List>
+              <SummaryItem kind="no">Slow for >5K objects</SummaryItem>
+              <SummaryItem kind="no">Bad for work with pixels</SummaryItem>
+            </List>
+          </Row>
+        </Slide>
 
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
@@ -401,21 +401,20 @@ export default class Presentation extends React.Component {
             REACT + 2D CANVAS + devicePixelRatio
           </Heading>
           <Row>
-            <CodeSnippet
-              code={`
-  render() {
-    const { width, height } = this.props
-    const { devicePixelRatio } = window
-    return (
-      <canvas
-        style={{ width, height }}
-        width={width * devicePixelRatio}
-        height={height * devicePixelRatio}
-        ref={this.canvasRef}
-      />
-    )
-              `}
-            />
+            <CodeSnippet code={
+`
+ render() {
+   const { width, height } = this.props
+   const { devicePixelRatio } = window
+   return (
+     <canvas
+       style={{ width, height }}
+       width={width * devicePixelRatio}
+       height={height * devicePixelRatio}
+       ref={this.canvasRef}
+     />
+   )
+ }`} />
           </Row>
         </Slide>
 
@@ -423,48 +422,101 @@ export default class Presentation extends React.Component {
 
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
-           <Heading size={6} textColor="secondary" caps>
-             2D Canvas summary
-           </Heading>
-           <Row>
-             <List>
-               <SummaryItem kind="yes">Faster than SVG</SummaryItem>
-               <SummaryItem kind="yes">Better for many objects (~10K)</SummaryItem>
-               <SummaryItem kind="yes">Better for working with pixels</SummaryItem>
-             </List>
-             <List>
-               <SummaryItem kind="no">Less convenient</SummaryItem>
-               <SummaryItem kind="no">No support for interactivity</SummaryItem>
-             </List>
-           </Row>
-         </Slide>
+          <Heading size={6} textColor="secondary" caps>
+            2D Canvas summary
+          </Heading>
+          <Row>
+            <List>
+              <SummaryItem kind="yes">Faster than SVG</SummaryItem>
+              <SummaryItem kind="yes">Better for many objects (~10K)</SummaryItem>
+              <SummaryItem kind="yes">Better for working with pixels</SummaryItem>
+            </List>
+            <List>
+              <SummaryItem kind="no">Less convenient</SummaryItem>
+              <SummaryItem kind="no">No support for interactivity</SummaryItem>
+            </List>
+          </Row>
+        </Slide>
 
 
 
 
-          <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
-            <Heading size={6} textColor="secondary" caps>
-              WebGL (3D Canvas)
-            </Heading>
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            WebGL (3D Canvas)
+          </Heading>
 
-            <Row>
-              <List>
-                <Appear><ListItem>3D graphics</ListItem></Appear>
-                <Appear><ListItem>Runs on the GPU</ListItem></Appear>
-                <Appear><ListItem>The fastest performance</ListItem></Appear>
-                <Appear><ListItem>Most difficult to use</ListItem></Appear>
-                <Appear><ListItem>Shader magic</ListItem></Appear>
-              </List>
+          <Row>
+            <List>
+              <Appear><ListItem>3D graphics</ListItem></Appear>
+              <Appear><ListItem>Runs on the GPU</ListItem></Appear>
+              <Appear><ListItem>Shader magic</ListItem></Appear>
+            </List>
 
-              <Figure>
-                <HelloGLAnim />
-              </Figure>
-            </Row>
-          </Slide>
+            <Figure>
+              <HelloGLAnim />
+            </Figure>
+          </Row>
+        </Slide>
 
 
 
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            WebGL (3D Canvas) - Shaders
+          </Heading>
 
+          <Row>
+            <CodeSnippet
+              code={HelloGLCode}
+              fontSize={1.2}
+            />
+
+            <Figure>
+              <HelloGL />
+            </Figure>
+          </Row>
+        </Slide>
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            WebGL summary
+          </Heading>
+          <Row>
+            <List>
+              <SummaryItem kind="yes">The fastest performance</SummaryItem>
+              <SummaryItem kind="yes">Best for many objects (~1M)</SummaryItem>
+              <SummaryItem kind="yes">Can be used for fast 2D</SummaryItem>
+            </List>
+            <List>
+              <SummaryItem kind="no">Most difficult to use</SummaryItem>
+              <SummaryItem kind="no">Hardware differences</SummaryItem>
+            </List>
+          </Row>
+        </Slide>
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading size={6} textColor="secondary" caps>
+            Overall summary
+          </Heading>
+          <List>
+            <ListItem kind="yes">Use SVG if you can</ListItem>
+            <ListItem kind="yes">Use 2D canvas for > 5K objects or pixels</ListItem>
+            <ListItem kind="yes">Use WebGL for > 100K objects or 3D/shaders</ListItem>
+          </List>
+        </Slide>
+
+
+
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading margin="0 0 50px 0"  caps textColor="secondary" bold>
+            Thanks!
+          </Heading>
+          <Image
+            src="images/swiss-migration.png"
+          />
+        </Slide>
       </Deck>
     );
   }

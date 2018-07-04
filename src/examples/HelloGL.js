@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Shaders, Node, GLSL } from "gl-react";
-import { Surface } from "gl-react-dom";
+import React, { Component } from 'react'
+import { Shaders, Node, GLSL } from 'gl-react'
+import { Surface } from 'gl-react-dom'
 
-// in gl-react you need to statically define "shaders":
+// in gl-react you need to statically define 'shaders':
 const shaders = Shaders.create({
   helloGL: {
 // This is our first fragment shader in GLSL language (OpenGL Shading Language)
@@ -19,7 +19,37 @@ void main() {
 // we set in output the pixel color using the vec4(r,g,b,a) format.
 // see GLSL_ES_Specification_1.0.17
   }
-});
+})
+
+export default class HelloGL extends Component {
+  render() {
+    return (
+      <Surface width={400} height={400}>
+        <Node shader={shaders.helloGL} />
+      </Surface>
+    )
+// Surface creates the canvas, an area of pixels where you can draw.
+// Node instanciates a 'shader program' with the fragment shader defined above.
+  }
+}
+
+
+export const code = `
+import { Shaders, Node, GLSL } from 'gl-react'
+import { Surface } from 'gl-react-dom'
+
+// in gl-react you need to statically define 'shaders':
+const shaders = Shaders.create({
+  helloGL: {
+    frag: GLSL\`
+precision highp float;
+varying vec2 uv;
+void main() {
+  gl_FragColor = vec4(uv.x, uv.y, 0.5, 1.0);
+}
+\`
+  }
+})
 
 export default class HelloGL extends Component {
   render() {
@@ -27,12 +57,7 @@ export default class HelloGL extends Component {
       <Surface width={300} height={300}>
         <Node shader={shaders.helloGL} />
       </Surface>
-    );
-// Surface creates the canvas, an area of pixels where you can draw.
-// Node instanciates a "shader program" with the fragment shader defined above.
+    )
   }
 }
-
-
-export const code = `
 `
