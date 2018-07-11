@@ -162,6 +162,15 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
+        <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
+          <Heading margin="0 0 50px 0" size={6} caps textColor="secondary" bold>
+            Public transport
+          </Heading>
+          <Image
+            src="images/ptn-metrics.png"
+          />
+        </Slide>
+
 
         <Slide bgColor="primary" textColor="tertiary" align="flex-end center">
           <Heading size={6} textColor="secondary" caps>
