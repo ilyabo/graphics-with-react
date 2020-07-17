@@ -6,7 +6,7 @@
   "dependencies": {
     "gl-react": "^3.15.0",
     "gl-react-dom": "^3.15.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "rbush": "^2.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
